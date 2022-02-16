@@ -1,0 +1,10 @@
+Ordinary Least Squares:
+	Try 1:
+		Mean squared error:
+		Coefficient of determination:
+	Try 2:
+		Mean squared error:
+		Coefficient of determination:
+	Try 3:
+		Mean squared error:
+		Coefficient of determination:

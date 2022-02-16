@@ -1,0 +1,17 @@
+Gen*1/Forms
+Gen*1/MRI
+Gen*1/Programs
+Gen*1/Video
+Gen*1/Idea*Overview.txt
+Gen*1/nii2png.py
+Gen*1/Written*Report.pdf
+Gen*1/AI/Data
+Gen*1/AI/Pred
+Gen*1/AI/archive.zip
+Gen*1/AI/importn*bits*of*code.txt
+Gen*1/AI/Try*1/Test*Stuff
+Gen*2/MRI*Data/
+Gen*2/MRI*Data.rar
+__pycache__/
+*.tfrecords
+*.h5

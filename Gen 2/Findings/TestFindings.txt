@@ -1,0 +1,44 @@
+Ordinary Least Squares:
+	Mean squared error: 0.24
+	Coefficient of determination: 0.04
+Ridge:
+	Mean squared error: 0.24
+	Coefficient of determination: 0.04
+Lasso:
+	Mean squared error: 0.03
+	Coefficient of determination: 0.86
+Elastic-Net:
+	Mean squared error: 0.03
+	Coefficient of determination: 0.90
+LassoLars:
+	Mean squared error: 0.25
+	Coefficient of determination: 0.00
+Kernel Ridge:
+	Mean squared error: 0.24
+	Coefficient of determination: 0.04
+SVR:
+	Mean squared error: 0.25
+	Coefficient of determination: 0.00
+NuSVR:
+	Mean squared error: 0.25
+	Coefficient of determination: 0.00
+LinearSVR:
+	Mean squared error: 0.25
+	Coefficient of determination: 0.00
+DecisionTreeClassifier:
+	Mean squared error: 0.33
+	Coefficient of determination: -0.33
+Random Forests:
+	Mean squared error: 0.08
+	Coefficient of determination: 0.67
+Extra Trees:
+	Mean squared error: 0.42
+	Coefficient of determination: -0.67
+Gradient Boosting Estimator:
+	Mean squared error: 0.33
+	Coefficient of determination: -0.33
+Hist Gradient Boosting Classifier:
+	Mean squared error: 0.33
+	Coefficient of determination: -0.33
+Custom CNN:
+	
