@@ -10,7 +10,11 @@ def get_model_1(height, width, depth):
 
     inputs = keras.Input((height, width, depth, 1))
 
-    x = layers.Conv3D(filters=16, kernel_size=3, activation="relu")(inputs)
+    x = layers.Conv3D(filters=8, kernel_size=3, activation="relu")(inputs)
+    x = layers.MaxPool3D(pool_size=2)(x)
+    x = layers.BatchNormalization()(x)
+
+    x = layers.Conv3D(filters=8, kernel_size=3, activation="relu")(x)
     x = layers.MaxPool3D(pool_size=2)(x)
     x = layers.BatchNormalization()(x)
 
@@ -22,14 +26,10 @@ def get_model_1(height, width, depth):
     x = layers.MaxPool3D(pool_size=2)(x)
     x = layers.BatchNormalization()(x)
 
-    x = layers.Conv3D(filters=64, kernel_size=3, activation="relu")(x)
-    x = layers.MaxPool3D(pool_size=2)(x)
-    x = layers.BatchNormalization()(x)
+    x = layers.GlobalAveragePooling3D()(x)
+    x = layers.Dense(units=512, activation="relu")(x)
+    x = layers.Dropout(0.3)(x)
 
-    # x = layers.GlobalAveragePooling3D()(x)
-    # x = layers.Dense(units=512, activation="relu")(x)
-    # x = layers.Dropout(0.3)(x)
-    x = layers.Flatten()(x)
     outputs = layers.Dense(units=1, activation="sigmoid")(x)
 
     # Define the model.
@@ -87,9 +87,12 @@ def get_model_3(height, width, depth):
 
 def get_model_4(height, width, depth):
     inputs = keras.Input((height, width, depth, 1))
-    x = layers.Dense(units=20, activation="relu")(inputs)
+    x = layers.Conv3D(filters=8, kernel_size=3, activation="relu")(inputs)
+    x = layers.MaxPool3D(pool_size=2)(x)
+    x = layers.BatchNormalization()(x)
     x = layers.Dense(units=20, activation="relu")(x)
-    x = layers.GlobalAveragePooling3D()(x)
+    x = layers.Dense(units=20, activation="relu")(x)
+    x = layers.GlobalAveragePooling3D()(x) ## Try looking into Maxpooling instead or flatening
     outputs = layers.Dense(units=1, activation="sigmoid")(x)
     model = keras.Model(inputs, outputs, name="3dcnn")
     return model
