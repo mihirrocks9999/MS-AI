@@ -26,12 +26,12 @@ def predict(printPredict, batch_size, prefetch_size):
     # Define data loaders.
     full_dataset = tf.data.TFRecordDataset("Gen 2/Code/CNN/Custom/testset.tfrecords").map(decode)
     test_dataset = (
-            full_dataset.shuffle(length)
-            .batch(batch_size)
+            full_dataset.shuffle(batch_size * 10)
+            .batch(1)
             .prefetch(prefetch_size)
         )
 
-    prediction = model.predict(test_dataset, verbose=1)
+    prediction = model.predict(x=test_dataset, verbose=1)
     results = []
     i = 0
     for next_element in test_dataset:
@@ -49,7 +49,11 @@ def predict(printPredict, batch_size, prefetch_size):
         renum = renum.replace('Actual Value: ','')
         renum = float(renum)
         acnum = float(num[0])
+        if acnum > 0.5:
+            acnum = 1.0
+        elif acnum <=0.5:
+            acnum = 0.0
         temp = abs(renum-acnum)
         accuracy = accuracy + temp
-    accuracy = float(accuracy/(length/batch_size))
+    accuracy = float(accuracy/(length/1))
     print("Predicition Accuracy is: " + str(accuracy))

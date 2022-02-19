@@ -10,11 +10,11 @@ MS_traindir = "Gen 2/MRI Data/OG/Training/MS"
 noMS_testdir = "Gen 2/MRI Data/OG/Test/noMS"
 MS_testdir = "Gen 2/MRI Data/OG/Test/MS"
 height, width, depth = 181, 217, 181
-batch_size = 2 # number of samples that will be propagated through the network. Less = less memory but more inaccurate
+batch_size = 32 # number of samples that will be propagated through the network. Less = less memory but more inaccurate
 prefetch_size = 1 # How many data sets to prefetch for gpu, increase until no speed increases
 ratio = 0.7 # ratio of training to validation
 printPredict = True # Print each prediction
-modelnum = 1 # Select which model to use
+modelnum = 5 # Select which model to use
 epochs = 100 # Number of trainings
 
 # Optimizer
@@ -22,9 +22,9 @@ OptimizerType = "Adam" # Adam, SGD
 momentum = 0.0 # SGD
 
 # Modify Learning Rate: https://keras.io/api/optimizers/learning_rate_schedules/, for info on what these mean.
-Learnertype = "Constant" # ExponentialDecay, PolynomialDecay, InverseTimeDecay, Constant
-initial_learning_rate = 0.1 # Needed for ExponentialDecay, PolynomialDecay, InverseTimeDecay, Constant
-end_learning_rate = 0.01 # Needed for PolynomialDecay
+Learnertype = "ExponentialDecay" # ExponentialDecay, PolynomialDecay, InverseTimeDecay, Constant
+initial_learning_rate = 0.001 # Needed for ExponentialDecay, PolynomialDecay, InverseTimeDecay, Constant
+end_learning_rate = 0.0001 # Needed for PolynomialDecay
 decay_steps = 100000 # Needed for ExponentialDecay, PolynomialDecay, InverseTimeDecay
 power = 0.5 # Needed for PolynomialDecay
 decay_rate = 0.90 # Needed for ExponentialDecay, InverseTimeDecay
@@ -33,14 +33,14 @@ staircase = True # Needed for ExponentialDecay, InverseTimeDecay
 # Callbacks
 checkpoint = True # Use checkpoint callback to save best
 earlystopping = True # Stop model early if no growth
-monitor = "val_AUC" # What quantity to monitor for early stopping
+monitor = "val_Accuracy" # What quantity to monitor for early stopping
 restore_best_weights = True # Restore the best weights for each epoch
-patience = 15 # Epochs with no improvement, training will be stopped.
+patience = 10 # Epochs with no improvement, training will be stopped.
 factorReduce = 0.2 # Factor learning rate should be reduced after stagnation
 patienceLR = 5 # Epochs after learning rate should be reduced
-min_lr = 0.001 # Minimum learning rate
+min_lr = 0.00001 # Minimum learning rate
 
-from Models import get_model_1, get_model_2, get_model_3, get_model_4
+from Models import get_model_1, get_model_2, get_model_3, get_model_4, get_model_5
 
 inputstring = input("Enter C for create TF Record. Enter T for Train. Enter P for predict. : ")
 inputstring = inputstring.lower()
@@ -60,6 +60,8 @@ if inputstring.find('t') != -1:
         model = get_model_3(height, width, depth)
     if modelnum == 4:
         model = get_model_4(height, width, depth)
+    if modelnum == 5:
+        model = get_model_5(height, width, depth)
     model.summary()
 
     # Learning rate overtime
@@ -114,7 +116,7 @@ if inputstring.find('t') != -1:
 
     # Train the model, doing validation at the end of each epoch
     model.fit(
-        train_dataset,
+        x=train_dataset,
         validation_data=validation_dataset,
         epochs=epochs,
         shuffle=True,

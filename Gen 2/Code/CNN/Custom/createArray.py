@@ -31,13 +31,14 @@ def importArrays(batch_size, prefetch_size, ratio):
 
     # Augment the on the fly during training.
     train_dataset = (
-        train_loader.shuffle(lenRatio)
+        train_loader.shuffle(batch_size * 10)
         .batch(batch_size)
         .prefetch(prefetch_size)
     )
+
     # Only rescale.
     validation_dataset = (
-        validation_loader.shuffle((length-lenRatio))
+        validation_loader.shuffle(batch_size * 10)
         .batch(batch_size)
         .prefetch(prefetch_size)
     )
