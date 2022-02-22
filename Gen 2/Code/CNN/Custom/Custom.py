@@ -10,11 +10,11 @@ MS_traindir = "Gen 2/MRI Data/OG/Training/MS"
 noMS_testdir = "Gen 2/MRI Data/OG/Test/noMS"
 MS_testdir = "Gen 2/MRI Data/OG/Test/MS"
 height, width, depth = 181, 217, 181
-batch_size = 32 # number of samples that will be propagated through the network. Less = less memory but more inaccurate
+batch_size = 8 # number of samples that will be propagated through the network. Less = less memory but more inaccurate
 prefetch_size = 1 # How many data sets to prefetch for gpu, increase until no speed increases
 ratio = 0.7 # ratio of training to validation
 printPredict = True # Print each prediction
-modelnum = 5 # Select which model to use
+modelnum = 2 # Select which model to use
 epochs = 100 # Number of trainings
 
 # Optimizer
@@ -40,7 +40,7 @@ factorReduce = 0.2 # Factor learning rate should be reduced after stagnation
 patienceLR = 5 # Epochs after learning rate should be reduced
 min_lr = 0.00001 # Minimum learning rate
 
-from Models import get_model_1, get_model_2, get_model_3, get_model_4, get_model_5
+from Models import get_model_1, get_model_2, get_model_3, get_model_4, get_model_5, get_model_6
 
 inputstring = input("Enter C for create TF Record. Enter T for Train. Enter P for predict. : ")
 inputstring = inputstring.lower()
@@ -62,6 +62,8 @@ if inputstring.find('t') != -1:
         model = get_model_4(height, width, depth)
     if modelnum == 5:
         model = get_model_5(height, width, depth)
+    if modelnum == 6:
+        model = get_model_6(height, width, depth)
     model.summary()
 
     # Learning rate overtime
@@ -115,7 +117,7 @@ if inputstring.find('t') != -1:
         callbacks = [early_stopping_cb]
 
     # Train the model, doing validation at the end of each epoch
-    model.fit(
+    history = model.fit(
         x=train_dataset,
         validation_data=validation_dataset,
         epochs=epochs,
@@ -125,6 +127,8 @@ if inputstring.find('t') != -1:
     )
 
     model.save("Gen 2/Code/CNN/Custom/currClassification.h5")
+
+    
     print("Done Computing")
 if inputstring.find('p') != -1:
     predict(printPredict, batch_size, prefetch_size)

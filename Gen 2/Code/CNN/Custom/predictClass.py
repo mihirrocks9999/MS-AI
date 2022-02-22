@@ -43,17 +43,4 @@ def predict(printPredict, batch_size, prefetch_size):
     results = numpy.array(results)
     if printPredict:
         print(results)
-    accuracy = 0
-    for num in results:
-        renum = num[1]
-        renum = renum.replace('Actual Value: ','')
-        renum = float(renum)
-        acnum = float(num[0])
-        if acnum > 0.5:
-            acnum = 1.0
-        elif acnum <=0.5:
-            acnum = 0.0
-        temp = abs(renum-acnum)
-        accuracy = accuracy + temp
-    accuracy = float(accuracy/(length/1))
-    print("Predicition Accuracy is: " + str(accuracy))
+    model.evaluate(test_dataset)
