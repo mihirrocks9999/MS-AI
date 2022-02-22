@@ -145,3 +145,11 @@ def get_model_6(height, width, depth):
     outputs = layers.Dense(units=1, activation="sigmoid")(x)
     model = keras.Model(inputs, outputs, name="3dcnn")
     return model
+
+def test_model(height, width, depth):
+
+    inputs = keras.Input((height, width, depth, 1))
+    x = layers.Flatten()(inputs)
+    outputs = layers.Dense(units=1, activation="sigmoid")(x)
+    model = keras.Model(inputs, outputs, name="3dcnn")
+    return model

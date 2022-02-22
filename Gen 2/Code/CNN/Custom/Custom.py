@@ -4,18 +4,19 @@ from tensorflow.keras.metrics import TruePositives, FalsePositives, TrueNegative
 from tensorflow.keras.metrics import SpecificityAtSensitivity
 from createTFRecord import createTF, createTestTF
 from predictClass import predict
+from displayResults import lossCurve
 
 noMS_traindir = "Gen 2/MRI Data/OG/Training/noMS"
 MS_traindir = "Gen 2/MRI Data/OG/Training/MS"
 noMS_testdir = "Gen 2/MRI Data/OG/Test/noMS"
 MS_testdir = "Gen 2/MRI Data/OG/Test/MS"
 height, width, depth = 181, 217, 181
-batch_size = 8 # number of samples that will be propagated through the network. Less = less memory but more inaccurate
+batch_size = 64 # number of samples that will be propagated through the network. Less = less memory but more inaccurate
 prefetch_size = 1 # How many data sets to prefetch for gpu, increase until no speed increases
 ratio = 0.7 # ratio of training to validation
 printPredict = True # Print each prediction
-modelnum = 2 # Select which model to use
-epochs = 100 # Number of trainings
+modelnum = "test" # Select which model to use
+epochs = 5 # Number of trainings
 
 # Optimizer
 OptimizerType = "Adam" # Adam, SGD
@@ -40,7 +41,7 @@ factorReduce = 0.2 # Factor learning rate should be reduced after stagnation
 patienceLR = 5 # Epochs after learning rate should be reduced
 min_lr = 0.00001 # Minimum learning rate
 
-from Models import get_model_1, get_model_2, get_model_3, get_model_4, get_model_5, get_model_6
+from Models import get_model_1, get_model_2, get_model_3, get_model_4, get_model_5, get_model_6, test_model
 
 inputstring = input("Enter C for create TF Record. Enter T for Train. Enter P for predict. : ")
 inputstring = inputstring.lower()
@@ -52,6 +53,8 @@ if inputstring.find('c') != -1:
 if inputstring.find('t') != -1:
     train_dataset, validation_dataset = importArrays(batch_size, prefetch_size, ratio)
     model = None
+    if modelnum=="test":
+        model = test_model(height, width, depth)
     if modelnum == 1:
         model = get_model_1(height, width, depth)
     if modelnum == 2:
@@ -127,8 +130,8 @@ if inputstring.find('t') != -1:
     )
 
     model.save("Gen 2/Code/CNN/Custom/currClassification.h5")
+    lossCurve(history.history)
 
-    
     print("Done Computing")
 if inputstring.find('p') != -1:
     predict(printPredict, batch_size, prefetch_size)
