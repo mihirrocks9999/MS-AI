@@ -130,17 +130,9 @@ def get_model_5(height, width, depth):
 
 def get_model_6(height, width, depth):
     inputs = keras.Input((height, width, depth, 1))
-
-    x = layers.MaxPool3D(pool_size=3)(inputs)
-
-    x = layers.Conv3D(filters=32, kernel_size=3, activation="relu")(x)
-    x = layers.MaxPool3D(pool_size=2)(x)
-    
-    x = layers.Conv3D(filters=64, kernel_size=3, activation="relu")(x)
-    x = layers.MaxPool3D(pool_size=2)(x)
-   
-    x = layers.Flatten()(x)
-    x = layers.Dropout(0.5)(x)
+    x = layers.Flatten()(inputs)
+    x = layers.Dense(units=4, activation="relu")(x)
+    x = layers.Dropout(0.3)(x)
 
     outputs = layers.Dense(units=1, activation="sigmoid")(x)
     model = keras.Model(inputs, outputs, name="3dcnn")
@@ -150,6 +142,15 @@ def get_model_7(height, width, depth):
 
     inputs = keras.Input((height, width, depth, 1))
     x = layers.Flatten()(inputs)
+    outputs = layers.Dense(units=1, activation="sigmoid")(x)
+    model = keras.Model(inputs, outputs, name="3dcnn")
+    return model
+
+def get_model_8(height, width, depth):
+
+    inputs = keras.Input((height, width, depth, 1))
+    x = layers.Flatten()(inputs)
+    x = layers.SimpleRNN(units=32, activation="relu")
     outputs = layers.Dense(units=1, activation="sigmoid")(x)
     model = keras.Model(inputs, outputs, name="3dcnn")
     return model

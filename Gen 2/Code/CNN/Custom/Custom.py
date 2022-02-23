@@ -15,12 +15,12 @@ batch_size = 32 # number of samples that will be propagated through the network.
 prefetch_size = 1 # How many data sets to prefetch for gpu, increase until no speed increases
 ratio = 0.7 # ratio of training to validation
 printPredict = True # Print each prediction
-modelnum = 7 # Select which model to use
-epochs = 100 # Number of trainings
+modelnum = 6 # Select which model to use
+epochs = 2 # Number of trainings
 
 # Optimizer
-OptimizerType = "Adam" # Adam, SGD
-momentum = 0.0 # SGD
+OptimizerType = "Adam" # Adam, SGD, RMSprop
+momentum = 0.0 # SGD, RMSprop
 
 # Modify Learning Rate: https://keras.io/api/optimizers/learning_rate_schedules/, for info on what these mean.
 Learnertype = "ExponentialDecay" # ExponentialDecay, PolynomialDecay, InverseTimeDecay, Constant
@@ -41,7 +41,7 @@ factorReduce = 0.2 # Factor learning rate should be reduced after stagnation
 patienceLR = 5 # Epochs after learning rate should be reduced
 min_lr = 0.00001 # Minimum learning rate
 
-from Models import get_model_1, get_model_2, get_model_3, get_model_4, get_model_5, get_model_6, get_model_7
+from Models import get_model_1, get_model_2, get_model_3, get_model_4, get_model_5, get_model_6, get_model_7, get_model_8
 
 inputstring = input("Enter C for create TF Record. Enter T for Train. Enter P for predict. : ")
 inputstring = inputstring.lower()
@@ -67,6 +67,8 @@ if inputstring.find('t') != -1:
         model = get_model_6(height, width, depth)
     if modelnum == 7:
         model = get_model_7(height, width, depth)
+    if modelnum == 8:
+        model = get_model_8(height, width, depth)
     model.summary()
 
     # Learning rate overtime
@@ -97,6 +99,8 @@ if inputstring.find('t') != -1:
         optimizer = keras.optimizers.Adam(learning_rate=lr_schedule) # Type of optimizer used, there are many: https://keras.io/api/optimizers/
     if OptimizerType == "SGD":
         optimizer = keras.optimizers.SGD(learning_rate=lr_schedule, momentum=momentum) # Type of optimizer used, there are many: https://keras.io/api/optimizers/
+    if OptimizerType == "RMSprop":
+        optimizer = keras.optimizers.RMSprop(learning_rate=lr_schedule, momentum=momentum) # Type of optimizer used, there are many: https://keras.io/api/optimizers/
     model.compile(
         loss="binary_crossentropy",
         optimizer=optimizer,
