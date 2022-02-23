@@ -45,19 +45,3 @@ def predict(printPredict, batch_size, prefetch_size):
         print(results)
     np.savetxt("Gen 2/Code/CNN/Custom/prediction.txt", results, fmt="%10s %10s")
     model.evaluate(x=test_dataset, verbose=1)
-    accuracy = 0.0
-    for num in results:
-        renum = num[1]
-        renum = renum.replace('Actual Value: ','')
-        renum = float(renum)
-        acnum = float(num[0])
-        if acnum > 0.5:
-            acnum = 1.0
-        elif acnum <=0.5:
-            acnum = 0.0   
-        temp = 0
-        if abs(renum-acnum) < 0.01:
-            temp = 1
-        accuracy = accuracy + temp
-    accuracy = accuracy/(600.0/batch_size)
-    print("Predicition Accuracy is: " + str(accuracy))

@@ -6,6 +6,7 @@ from tensorflow.keras.initializers import GlorotNormal
 
 # https://keras.io/examples/vision/mnist_convnet/
 # https://cs230.stanford.edu/projects_spring_2018/reports/8291133.pdf
+# https://towardsdatascience.com/building-a-brain-tumor-classification-app-e9a0eb9f068
 
 def get_model_1(height, width, depth):
     """Build a 3D convolutional neural network model."""
@@ -130,8 +131,12 @@ def get_model_5(height, width, depth):
 
 def get_model_6(height, width, depth):
     inputs = keras.Input((height, width, depth, 1))
-    x = layers.Flatten()(inputs)
-    x = layers.Dense(units=4, activation="relu")(x)
+    x = layers.Conv3D(filters=32, kernel_size=3)(inputs)
+    x = layers.BatchNormalization()(x)
+    x = layers.MaxPool3D(pool_size=2)(x)
+    x = layers.Flatten()(x)
+    
+    x = layers.Dense(units=10, activation="relu")(x)
     x = layers.Dropout(0.3)(x)
 
     outputs = layers.Dense(units=1, activation="sigmoid")(x)
@@ -142,6 +147,8 @@ def get_model_7(height, width, depth):
 
     inputs = keras.Input((height, width, depth, 1))
     x = layers.Flatten()(inputs)
+    x = layers.Dense(units=64, activation="relu")(x)
+    x = layers.Dropout(0.3)(x)
     outputs = layers.Dense(units=1, activation="sigmoid")(x)
     model = keras.Model(inputs, outputs, name="3dcnn")
     return model
@@ -149,8 +156,19 @@ def get_model_7(height, width, depth):
 def get_model_8(height, width, depth):
 
     inputs = keras.Input((height, width, depth, 1))
+    #x = layers.Flatten()(inputs)
+    x = layers.SimpleRNN(units=32, activation="relu")(inputs)
+    x = layers.Dense(units=10, activation="relu")(x)
+    outputs = layers.Dense(units=1, activation="sigmoid")(x)
+    model = keras.Model(inputs, outputs, name="3dcnn")
+    return model
+
+def get_model_9(height, width, depth):
+
+    inputs = keras.Input((height, width, depth, 1))
     x = layers.Flatten()(inputs)
-    x = layers.SimpleRNN(units=32, activation="relu")
+    x = layers.Bidirectional(layers.GRU(units=32, activation="relu"))(x)
+    x = layers.Dense(units=10, activation="relu")
     outputs = layers.Dense(units=1, activation="sigmoid")(x)
     model = keras.Model(inputs, outputs, name="3dcnn")
     return model
