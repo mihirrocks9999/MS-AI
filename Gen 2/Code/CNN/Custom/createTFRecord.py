@@ -30,6 +30,7 @@ def createTF(noMS_dir, MS_dir, height, width, depth):
 
         # Load the image and label
         img = nib.load(scan).get_fdata()
+        img = img / 1500.0
         label = 2
         if "noMS" in scan:
             label = 0
@@ -74,6 +75,7 @@ def createTestTF(noMS_dir, MS_dir, height, width, depth):
 
         # Load the image and label
         img = nib.load(scan).get_fdata()
+        img = img / 1500.0
         label = 2
         if "noMS" in scan:
             label = 0

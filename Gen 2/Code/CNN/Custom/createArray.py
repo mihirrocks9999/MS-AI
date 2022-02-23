@@ -1,4 +1,5 @@
 import os
+from re import I
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '1'
 import tensorflow as tf
 #os.environ['CUDA_VISIBLE_DEVICES'] = '-1'
@@ -15,7 +16,9 @@ def decode(serialized_example):
                   'train/label': tf.io.FixedLenFeature([], tf.int64)})
 
     # NOTE: No need to cast these features, as they are already `tf.float32` values.
-    return features['train/image'], features['train/label']
+    img = features['train/image']
+    label = tf.cast(features['train/label'], tf.int32)
+    return img, label
 
 
 def importArrays(batch_size, prefetch_size, ratio):

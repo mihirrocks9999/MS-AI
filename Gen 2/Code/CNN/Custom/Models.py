@@ -146,7 +146,7 @@ def get_model_6(height, width, depth):
     model = keras.Model(inputs, outputs, name="3dcnn")
     return model
 
-def test_model(height, width, depth):
+def get_model_7(height, width, depth):
 
     inputs = keras.Input((height, width, depth, 1))
     x = layers.Flatten()(inputs)

@@ -1,14 +1,13 @@
 import nibabel
 import matplotlib.pyplot as plt
-import pandas as pd
+import numpy as np
 
-#struct = nibabel.load("C:/Users/mihir/Desktop/Mihir/Science Fair/Multiple Sclerosis AI/Gen 2/Test Stuff/brainweb.mnc")
-#struct_arr = struct.get_fdata()
+struct = nibabel.load("C:/Users/mihir/Desktop/Mihir/Science Fair/Multiple Sclerosis AI/Gen 2/MRI Data/Training/MS/Severe_10.mnc")
+struct_arr = struct.get_fdata() / 1500
 
-#nibabel.viewers.OrthoSlicer3D(struct_arr).show()
+maxval = np.amax(struct_arr)
+minval = np.amin(struct_arr)
 
-arr = [[10, 20, 50, 54, 45], [10000, 10389945, 34285743, 438753495, 3489578943]]
-arr1 = pd.DataFrame(arr[0])
-
-plt.plot(arr1)
-plt.show()
+print(maxval)
+print(minval)
+nibabel.viewers.OrthoSlicer3D(struct_arr).show()

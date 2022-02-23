@@ -7,15 +7,15 @@ import numpy as np
 def decode(serialized_example):
     # Decode examples stored in TFRecord
     # NOTE: make sure to specify the correct dimensions for the images
-    height, width, depth = 181, 217, 181
-
     features = tf.io.parse_single_example(
         serialized_example,
-        features={'train/image': tf.io.FixedLenFeature([height, width, depth, 1], tf.float32),
+        features={'train/image': tf.io.FixedLenFeature([181, 217, 181, 1], tf.float32),
                   'train/label': tf.io.FixedLenFeature([], tf.int64)})
 
     # NOTE: No need to cast these features, as they are already `tf.float32` values.
-    return features['train/image'], features['train/label']
+    img = features['train/image']
+    label = tf.cast(features['train/label'], tf.int32)
+    return img, label
 
 def predict(printPredict, batch_size, prefetch_size):
     model = tf.keras.models.load_model("Gen 2/Code/CNN/Custom/bestClassification.h5")
@@ -27,7 +27,7 @@ def predict(printPredict, batch_size, prefetch_size):
     full_dataset = tf.data.TFRecordDataset("Gen 2/Code/CNN/Custom/testset.tfrecords").map(decode)
     test_dataset = (
             full_dataset.shuffle(batch_size * 10)
-            .batch(1)
+            .batch(batch_size)
             .prefetch(prefetch_size)
         )
 
@@ -44,4 +44,20 @@ def predict(printPredict, batch_size, prefetch_size):
     if printPredict:
         print(results)
     np.savetxt("Gen 2/Code/CNN/Custom/prediction.txt", results, fmt="%10s %10s")
-    model.evaluate(test_dataset)
+    model.evaluate(x=test_dataset, verbose=1)
+    accuracy = 0.0
+    for num in results:
+        renum = num[1]
+        renum = renum.replace('Actual Value: ','')
+        renum = float(renum)
+        acnum = float(num[0])
+        if acnum > 0.5:
+            acnum = 1.0
+        elif acnum <=0.5:
+            acnum = 0.0   
+        temp = 0
+        if abs(renum-acnum) < 0.01:
+            temp = 1
+        accuracy = accuracy + temp
+    accuracy = accuracy/(600.0/batch_size)
+    print("Predicition Accuracy is: " + str(accuracy))
