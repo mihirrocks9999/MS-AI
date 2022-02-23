@@ -1,8 +1,8 @@
-import numpy
 import os
 from tabnanny import verbose
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '1'
 import tensorflow as tf
+import numpy as np
 
 def decode(serialized_example):
     # Decode examples stored in TFRecord
@@ -40,7 +40,8 @@ def predict(printPredict, batch_size, prefetch_size):
         label = "Actual Value: " + str(label)
         results.append([prediction[i][0], label])
         i = i + 1
-    results = numpy.array(results)
+    results = np.array(results, dtype='U')
     if printPredict:
         print(results)
+    np.savetxt("Gen 2/Code/CNN/Custom/prediction.txt", results, fmt="%10s %10s")
     model.evaluate(test_dataset)

@@ -3,7 +3,6 @@ import matplotlib.pyplot as plt
 
 def lossCurve(history):
     display = pd.DataFrame(history)
-    print(display)
     plt.plot(display["loss"])
     plt.ylabel("loss")
     plt.xlabel("epochs")

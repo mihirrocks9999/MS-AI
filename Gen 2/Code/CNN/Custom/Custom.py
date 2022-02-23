@@ -6,17 +6,17 @@ from createTFRecord import createTF, createTestTF
 from predictClass import predict
 from displayResults import lossCurve
 
-noMS_traindir = "Gen 2/MRI Data/OG/Training/noMS"
-MS_traindir = "Gen 2/MRI Data/OG/Training/MS"
-noMS_testdir = "Gen 2/MRI Data/OG/Test/noMS"
-MS_testdir = "Gen 2/MRI Data/OG/Test/MS"
+noMS_traindir = "Gen 2/MRI Data/Training/noMS"
+MS_traindir = "Gen 2/MRI Data/Training/MS"
+noMS_testdir = "Gen 2/MRI Data/Test/noMS"
+MS_testdir = "Gen 2/MRI Data/Test/MS"
 height, width, depth = 181, 217, 181
 batch_size = 64 # number of samples that will be propagated through the network. Less = less memory but more inaccurate
 prefetch_size = 1 # How many data sets to prefetch for gpu, increase until no speed increases
 ratio = 0.7 # ratio of training to validation
 printPredict = True # Print each prediction
 modelnum = "test" # Select which model to use
-epochs = 5 # Number of trainings
+epochs = 2 # Number of trainings
 
 # Optimizer
 OptimizerType = "Adam" # Adam, SGD
