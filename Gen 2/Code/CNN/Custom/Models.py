@@ -2,6 +2,9 @@ from tensorflow import keras
 from tensorflow.keras import layers
 from tensorflow.keras.regularizers import l2
 from tensorflow.keras.initializers import GlorotNormal
+import tensorflow as tf
+for gpu in tf.config.experimental.list_physical_devices('GPU'):
+     tf.config.experimental.set_memory_growth(gpu, True)
 
 
 # https://keras.io/examples/vision/mnist_convnet/
@@ -131,14 +134,10 @@ def get_model_5(height, width, depth):
 
 def get_model_6(height, width, depth):
     inputs = keras.Input((height, width, depth, 1))
-    x = layers.Conv3D(filters=32, kernel_size=3)(inputs)
+    x = layers.Conv3D(filters=4, kernel_size=3)(inputs)
     x = layers.BatchNormalization()(x)
     x = layers.MaxPool3D(pool_size=2)(x)
     x = layers.Flatten()(x)
-    
-    x = layers.Dense(units=10, activation="relu")(x)
-    x = layers.Dropout(0.3)(x)
-
     outputs = layers.Dense(units=1, activation="sigmoid")(x)
     model = keras.Model(inputs, outputs, name="3dcnn")
     return model
@@ -149,26 +148,6 @@ def get_model_7(height, width, depth):
     x = layers.Flatten()(inputs)
     x = layers.Dense(units=64, activation="relu")(x)
     x = layers.Dropout(0.3)(x)
-    outputs = layers.Dense(units=1, activation="sigmoid")(x)
-    model = keras.Model(inputs, outputs, name="3dcnn")
-    return model
-
-def get_model_8(height, width, depth):
-
-    inputs = keras.Input((height, width, depth, 1))
-    #x = layers.Flatten()(inputs)
-    x = layers.SimpleRNN(units=32, activation="relu")(inputs)
-    x = layers.Dense(units=10, activation="relu")(x)
-    outputs = layers.Dense(units=1, activation="sigmoid")(x)
-    model = keras.Model(inputs, outputs, name="3dcnn")
-    return model
-
-def get_model_9(height, width, depth):
-
-    inputs = keras.Input((height, width, depth, 1))
-    x = layers.Flatten()(inputs)
-    x = layers.Bidirectional(layers.GRU(units=32, activation="relu"))(x)
-    x = layers.Dense(units=10, activation="relu")
     outputs = layers.Dense(units=1, activation="sigmoid")(x)
     model = keras.Model(inputs, outputs, name="3dcnn")
     return model

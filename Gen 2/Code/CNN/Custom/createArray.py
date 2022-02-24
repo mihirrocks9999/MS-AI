@@ -1,11 +1,8 @@
 import os
-from re import I
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '1'
 import tensorflow as tf
-#os.environ['CUDA_VISIBLE_DEVICES'] = '-1'
 for gpu in tf.config.experimental.list_physical_devices('GPU'):
-     tf.config.experimental.set_memory_growth(gpu, True)
-import numpy as np
+    tf.config.experimental.set_memory_growth(gpu, True)
 
 def decode(serialized_example):
     # Decode examples stored in TFRecord

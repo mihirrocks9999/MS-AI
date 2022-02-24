@@ -1,7 +1,6 @@
-import os
-from tabnanny import verbose
-os.environ['TF_CPP_MIN_LOG_LEVEL'] = '1'
 import tensorflow as tf
+for gpu in tf.config.experimental.list_physical_devices('GPU'):
+     tf.config.experimental.set_memory_growth(gpu, True)
 import numpy as np
 
 def decode(serialized_example):
