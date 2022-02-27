@@ -29,19 +29,18 @@ def importArrays(batch_size, prefetch_size, ratio):
     validation_loader = full_dataset.skip(lenRatio)
     print("Data loaded")
 
-    # Augment the on the fly during training.
+    # Augment on the fly during training.
     train_dataset = (
         train_loader.shuffle(batch_size * 10)
         .batch(batch_size)
         .prefetch(prefetch_size)
     )
 
-    # Only rescale.
     validation_dataset = (
         validation_loader.shuffle(batch_size * 10)
         .batch(batch_size)
         .prefetch(prefetch_size)
     )
-    print("Done datset Preprocessing")
+    print("Done dataset Preprocessing")
 
     return train_dataset, validation_dataset

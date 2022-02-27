@@ -1,10 +1,150 @@
-0.49789733 Actual Value: 0
-0.49789733 Actual Value: 1
-0.49789733 Actual Value: 1
-0.49789733 Actual Value: 0
-0.49789733 Actual Value: 1
-0.49789733 Actual Value: 1
-0.49789733 Actual Value: 0
-0.49789733 Actual Value: 1
-0.49789733 Actual Value: 1
-0.49789733 Actual Value: 1
+0.38423303 Actual Value: 0
+0.38423303 Actual Value: 0
+ 0.7297052 Actual Value: 0
+0.20461193 Actual Value: 0
+0.28081495 Actual Value: 0
+ 0.9057047 Actual Value: 0
+ 0.9507844 Actual Value: 0
+0.81521344 Actual Value: 0
+0.38423303 Actual Value: 0
+ 0.5829129 Actual Value: 0
+0.56049055 Actual Value: 0
+0.53970325 Actual Value: 0
+0.56049055 Actual Value: 0
+0.50575966 Actual Value: 0
+0.53970325 Actual Value: 0
+0.23876889 Actual Value: 0
+0.28081495 Actual Value: 0
+ 0.6197928 Actual Value: 0
+0.26740196 Actual Value: 0
+ 0.9057047 Actual Value: 0
+ 0.4429854 Actual Value: 0
+ 0.9507844 Actual Value: 0
+0.60910165 Actual Value: 0
+ 0.5829129 Actual Value: 0
+0.67138696 Actual Value: 0
+0.67138696 Actual Value: 0
+ 0.8341524 Actual Value: 0
+0.20461193 Actual Value: 0
+0.50575966 Actual Value: 0
+ 0.6276319 Actual Value: 0
+ 0.6276319 Actual Value: 0
+0.26740196 Actual Value: 0
+ 0.6197928 Actual Value: 0
+0.02102217 Actual Value: 0
+0.26740196 Actual Value: 0
+0.02102217 Actual Value: 0
+ 0.4429854 Actual Value: 0
+0.50575966 Actual Value: 0
+0.44538853 Actual Value: 0
+0.02102217 Actual Value: 0
+ 0.9674077 Actual Value: 0
+0.13359927 Actual Value: 0
+ 0.7297052 Actual Value: 0
+  0.764818 Actual Value: 0
+ 0.9674077 Actual Value: 0
+ 0.5829129 Actual Value: 0
+0.75198394 Actual Value: 0
+0.44538853 Actual Value: 0
+0.75198394 Actual Value: 0
+ 0.6276319 Actual Value: 0
+ 0.7136673 Actual Value: 0
+0.75198394 Actual Value: 0
+0.16813235 Actual Value: 0
+0.17319132 Actual Value: 0
+0.22469597 Actual Value: 0
+ 0.9199282 Actual Value: 0
+0.91502494 Actual Value: 0
+ 0.5896854 Actual Value: 0
+ 0.9008582 Actual Value: 0
+0.23876889 Actual Value: 0
+ 0.5896854 Actual Value: 0
+ 0.9008582 Actual Value: 0
+0.13359927 Actual Value: 0
+0.22469597 Actual Value: 0
+0.16813235 Actual Value: 0
+0.22469597 Actual Value: 0
+0.81521344 Actual Value: 0
+ 0.7136673 Actual Value: 0
+0.17319132 Actual Value: 0
+ 0.5896854 Actual Value: 0
+0.11647141 Actual Value: 1
+ 0.3137709 Actual Value: 0
+ 0.8341524 Actual Value: 0
+0.11647141 Actual Value: 1
+ 0.4429854 Actual Value: 0
+0.93694454 Actual Value: 0
+0.22859386 Actual Value: 1
+0.22859386 Actual Value: 1
+0.93694454 Actual Value: 1
+ 0.4709476 Actual Value: 1
+0.41869357 Actual Value: 1
+ 0.8329847 Actual Value: 1
+0.54589236 Actual Value: 0
+ 0.9199282 Actual Value: 1
+ 0.4900733 Actual Value: 1
+ 0.4900733 Actual Value: 1
+0.20461193 Actual Value: 1
+ 0.3137709 Actual Value: 1
+ 0.4900733 Actual Value: 1
+ 0.6225301 Actual Value: 1
+ 0.3137709 Actual Value: 1
+0.17319132 Actual Value: 1
+ 0.7694786 Actual Value: 1
+0.45854098 Actual Value: 1
+0.07540624 Actual Value: 1
+0.13902122 Actual Value: 1
+0.80502594 Actual Value: 1
+0.54589236 Actual Value: 1
+  0.764818 Actual Value: 1
+ 0.8329847 Actual Value: 1
+ 0.9486817 Actual Value: 1
+ 0.7374722 Actual Value: 1
+0.07540624 Actual Value: 1
+0.86497694 Actual Value: 0
+ 0.6225301 Actual Value: 1
+0.54589236 Actual Value: 1
+ 0.9486817 Actual Value: 1
+0.80502594 Actual Value: 1
+ 0.8376708 Actual Value: 1
+ 0.9486817 Actual Value: 1
+0.93694454 Actual Value: 1
+ 0.8376708 Actual Value: 1
+ 0.7694786 Actual Value: 1
+ 0.8353811 Actual Value: 1
+ 0.7956479 Actual Value: 1
+0.029969534 Actual Value: 1
+0.91502494 Actual Value: 1
+ 0.5669431 Actual Value: 1
+0.029969534 Actual Value: 0
+ 0.7956479 Actual Value: 1
+ 0.7374722 Actual Value: 1
+0.062009312 Actual Value: 1
+ 0.9199282 Actual Value: 1
+0.062009312 Actual Value: 1
+ 0.4600014 Actual Value: 1
+ 0.7502571 Actual Value: 1
+ 0.8700769 Actual Value: 1
+ 0.7694786 Actual Value: 1
+ 0.1760999 Actual Value: 1
+0.23669267 Actual Value: 1
+0.57660276 Actual Value: 1
+0.59426326 Actual Value: 1
+0.21065743 Actual Value: 1
+ 0.7374722 Actual Value: 1
+0.57660276 Actual Value: 1
+ 0.8353811 Actual Value: 1
+0.57660276 Actual Value: 1
+ 0.1760999 Actual Value: 1
+0.23669267 Actual Value: 1
+ 0.7502571 Actual Value: 1
+0.41869357 Actual Value: 1
+0.54426605 Actual Value: 1
+  0.941406 Actual Value: 1
+0.13902122 Actual Value: 1
+ 0.8820917 Actual Value: 1
+ 0.5669431 Actual Value: 1
+0.029969534 Actual Value: 1
+0.54426605 Actual Value: 1
+ 0.7956479 Actual Value: 1
+0.60166246 Actual Value: 1

@@ -14,13 +14,14 @@ def create_training_data(datadir):
             try:
                 temp_array = nib.load(os.path.join(path,mri))  # convert to array
                 mri_array = temp_array.get_fdata()
+                mri_array = mri_array/1500
                 mri_array = np.array(mri_array)
                 mri_array = mri_array.flatten()
                 X.append(mri_array)
                 y.append(class_num)  # add this to our data array
             except Exception as e:
                 pass
-    X = np.asarray(X)
-    y = np.asarray(y)
+    X = np.asarray(X, dtype="float32")
+    y = np.asarray(y, dtype="int8")
     X, y = sklearn.utils.shuffle(X, y)
     return X, y

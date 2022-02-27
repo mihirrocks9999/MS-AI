@@ -28,9 +28,6 @@ LinearSVR:
 DecisionTreeClassifier:
 	Mean squared error: 0.33
 	Coefficient of determination: -0.33
-Random Forests:
-	Mean squared error: 0.08
-	Coefficient of determination: 0.67
 Extra Trees:
 	Mean squared error: 0.42
 	Coefficient of determination: -0.67
@@ -41,4 +38,12 @@ Hist Gradient Boosting Classifier:
 	Mean squared error: 0.33
 	Coefficient of determination: -0.33
 Custom CNN:
-	
+	Test_AUC: 0.8643
+	Test_Accuracy: 0.7700
+	Test_Precision: 0.6957
+	Test_Recall: 0.9600
+Random Forests:
+	Test_AUC: 0.5580
+	Test_Accuracy: 0.5710
+	Test_Precision: 0.5750
+	Test_Recall: 0.6030
